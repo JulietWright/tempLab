@@ -1,0 +1,292 @@
+// Source File Header
+// ccctc.cpp
+// Juliet Wright, CISP 360
+// 3/28/2021
+
+#include <iostream>
+#include <cctype>   //so we can use toupper/tolower functions
+#include <algorithm>  //needed to transform strings into lowercase strings
+#include <string>   // so we can work with strings
+
+using namespace std;
+
+//Function Prototype
+void programGreeting ( );
+double convertToKelvin (double kelvin);
+double convertToRankine (double rankine);
+double convertToCelsius (double celsius);
+
+// Specification A3 – Another Temperature Scale
+
+double convertToWright (double wright);   /* I am making up my own scale b/c I cannot find any other temperature scale online other than Kelvin, Fahrenheit, Celsius, and Rankine. I wanted to try kinetic energy, but kinetic energy is a measurement of particle movement (how fast/slow) which is measured in joules. */
+
+/* This program will access 4 objects and their temperature ranges. We will also include different temperature units if necessary. I am going to pretend that my “friend” is a chemist where they are conducting an experiment. This is a chemistry lab simulation where cat/cap/cot/cop are all chemical solutions being heated on a heating plate and it is necessary that each solution must not exceed or undergo the temperature limitations to prevent solutions from boiling over, undergoing a chemical explosion, and prevent any other safety hazards. I’m doing this to make the program more fun for me :D */
+ 
+int main ( )
+ 
+{
+ 
+	string solutionChoice;
+ 
+	double kelvin, rankine, celsius, wright;
+ 
+	double temp;
+ 
+	int scaleChoice;
+ 
+  programGreeting ( );   //Call the programGreeting function
+
+cout << "\nWhich chemical solution would you like to evaluate regarding its " << endl;
+cout << "temperature. Please enter: cat, cap, cot, or cop." << endl;
+cin >> solutionChoice;
+
+// Specification A1 – Sophisticated Word Check
+
+	 transform(solutionChoice.begin(), solutionChoice.end(), solutionChoice.begin(), ::tolower);
+	 
+
+
+// Specification C1 – Only Valid Words
+
+	while (solutionChoice != "cat" && solutionChoice != "cap" && solutionChoice != "cot" && solutionChoice != "cop")
+	{
+    	cout << "\nYou did not enter cat, cap, cot, or cop! Please try again." << endl;
+    	cin >> solutionChoice;
+   	 
+    	transform(solutionChoice.begin(), solutionChoice.end(), solutionChoice.begin(), ::tolower);
+	}
+
+if (solutionChoice == "cat")
+{
+	// Specification B1 – Floats for Temps
+	cout << "\nPlease enter the temperature of solution, cat, in degrees Fahrenheit." << endl;
+	cin >> temp;
+ 
+	// Specification B2 – Valid Temps Only
+	while (temp < 85.8 || temp > 102.2)
+	{
+    	cout << "\nThe temperature of ‘cat’ is either above or below the " << endl;
+    	cout << "recommended temperature scale which ranges from 86◦F " << endl;
+    	cout << "to 102◦F." << endl;
+    
+    	if (temp < 85.8)
+    	{
+        	cout << "\nYour solution of ‘cat’ is " << temp << "◦F which " << endl;
+        	cout << "is lower than the recommended level. Please increase " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+    	else if (temp > 102.2)
+    	{
+        	cout << "\nYour solution of ‘cat’ is " << temp << "◦F which is " << endl;
+        	cout << "higher than the recommended level. Please decrease " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+	}
+}
+ 
+else if (solutionChoice == "cot")
+{
+	// Specification B1 – Floats for Temps
+	cout << "\nPlease enter the temperature of solution, cot, in degrees Fahrenheit." << endl;
+	cin >> temp;
+    
+	// Specification B2 – Valid Temps Only
+	while (temp < 53.8 || temp > 80.2)
+	{
+    	cout << "\nThe temperature of ‘cot’ is either above or below the " << endl;
+    	cout << "recommended temperature scale which ranges from 54◦F " << endl;
+    	cout << "to 80◦F." << endl;
+    
+    	if (temp < 53.8)
+    	{
+        	cout << "\nYour solution of ‘cot’ is " << temp << "◦F which " << endl;
+        	cout << "is lower than the recommended level. Please increase " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+    	else if (temp > 80.2)
+    	{
+        	cout << "\nYour solution of ‘cot’ is " << temp << "◦F which is " << endl;
+        	cout << "higher than the recommended level. Please decrease " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+	}
+ }
+ 
+else if (solutionChoice == "cap")
+{
+	// Specification B1 – Floats for Temps
+	cout << "\nPlease enter the temperature of solution, cap, in degrees Fahrenheit." << endl;
+	cin >> temp;
+    
+	// Specification B2 – Valid Temps Only
+	while (temp < 71.8 || temp > 88.2)
+	{
+    	cout << "\nThe temperature of ‘cap’ is either above or below the " << endl;
+    	cout << "recommended temperature scale which ranges from 72◦F " << endl;
+    	cout << "to 88◦F." << endl;
+    
+    	if (temp < 71.8)
+    	{
+        	cout << "\nYour solution of ‘cap’ is " << temp << "◦F which " << endl;
+        	cout << "is lower than the recommended level. Please increase " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+    	else if (temp > 88.2)
+    	{
+        	cout << "\nYour solution of ‘cap’ is " << temp << "◦F which is " << endl;
+        	cout << "higher than the recommended level. Please decrease " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+	}
+}
+ 
+// Specification A2 – Another Thing
+else if (solutionChoice == "cop")
+{
+	// Specification B1 – Floats for Temps
+	cout << "\nPlease enter the temperature of solution, cop, in degrees Fahrenheit." << endl;
+	cin >> temp;
+    
+	// Specification B2 – Valid Temps Only
+	while (temp < 43.8 || temp > 92.2)
+	{
+    	cout << "\nThe temperature of ‘cop’ is either above or below the " << endl;
+    	cout << "recommended temperature scale which ranges from 44◦F " << endl;
+    	cout << "to 92◦F." << endl;
+    
+    	if (temp < 43.8)
+    	{
+        	cout << "\nYour solution of ‘cop’ is " << temp << "◦F which " << endl;
+        	cout << "is lower than the recommended level. Please increase " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+    	else if (temp > 88.2)
+    	{
+        	cout << "\nYour solution of ‘cop’ is " << temp << "◦F which is " << endl;
+        	cout << "higher than the recommended level. Please decrease " << endl;
+        	cout << "the heating of your hot plate and record a new value " << endl;
+        	cout << "for the temperature in Fahrenheit." << endl;
+        	cin >> temp;
+    	}
+	}
+}
+
+// Specification C2 – Temp Scale Menu
+
+	cout << "\nNow that you have inputted the temperature for, " << solutionChoice << ",\n";
+	cout << "You can select one or all of the following temperature scales of the solution!\n";
+	cout << "Please enter 1, 2, 3, 4, or 5 from the selection menu:\n";
+	cout << "-------------------------------------------------------------------------------------\n";
+	cout << "1: Kelvin\n";
+	cout << "2: Rankine\n";
+	cout << "3: Celsius\n";
+	cout << "4: Wright\n";
+	cout << "5: All of the above\n";
+	cin >> scaleChoice;
+    
+	// Specification C3 – Valid Scale Menu Check
+	while ((scaleChoice < 1) || (scaleChoice > 5))
+{
+cout << "You did not enter 1, 2, 3, 4, or 5. Please try again\n";
+cin >> scaleChoice;
+}
+
+
+if (scaleChoice == 1)
+{
+	kelvin = convertToKelvin(temp);
+	cout << "Kelvin: " << kelvin << "K" << endl;
+}
+else if (scaleChoice == 2)
+{
+rankine = convertToRankine(temp);
+	cout << "Rankine: " << rankine << "◦R" << endl;
+}
+else if (scaleChoice == 3)
+{
+	celsius = convertToCelsius(temp);
+	cout << "Celsius: " << celsius << "◦C" << endl;
+}
+else if (scaleChoice == 4)
+{
+	wright = convertToWright(temp);
+	cout << "Wright: " << wright << "◦W" << endl;
+}
+else if (scaleChoice == 5)
+{
+	kelvin = convertToKelvin(temp);
+	rankine = convertToRankine(temp);
+	celsius = convertToCelsius(temp);
+	wright = convertToWright(temp);
+
+	cout << "Kelvin: " << kelvin << "K" << endl;
+	cout << "Rankine: " << rankine << "◦R" << endl;
+	cout << "Celsius: " << celsius << "◦C" << endl;
+	cout << "Wright: " << wright << "◦W" << endl;
+}
+
+return 0;
+    
+}
+
+void programGreeting ( )
+
+{
+
+	cout << "Hello! This is a program that will properly access four chemical " << endl;
+	cout << "solutions exposed to thermal energy. The four solutions being used " << endl;
+	cout << "are cat, cap, cot, and cop. All four solutions have specific " << endl;
+	cout << "temperature ranges they must remain within in order to prevent " << endl;
+	cout << "safety hazards and keep the experiment functioning properly. You will " << endl;
+	cout << "also be able to see different temperature ranges if needed. Good Luck!" << endl;
+
+   
+	cout << "\n";   // for blank space
+	cout << "My name is Juliet Wright\n";
+	cout << "\n";	// for blank space
+	cout << "Assignment due date: March 28, 2021\n";
+	cout << "Now we shall step into the program.\n";
+	cout << "----------------------------------------------------------------------------------\n";
+
+}
+
+double convertToKelvin (double kelvin)
+
+{
+	return 273.15 + (((kelvin - 32.0)*5.0)/9.0);
+}
+    
+double convertToRankine (double rankine)
+
+{
+	return rankine+459.67;
+}
+
+double convertToCelsius (double celsius)
+
+{
+	return (5.0/9.0)*(celsius-32.0);
+}
+
+double convertToWright (double wright)
+
+{
+	return wright + 232;
+}
+
+
+
